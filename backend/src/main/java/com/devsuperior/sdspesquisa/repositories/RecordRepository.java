@@ -1,9 +1,11 @@
 package com.devsuperior.sdspesquisa.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.devsuperior.sdspesquisa.entities.Genre;
+import com.devsuperior.sdspesquisa.entities.Record;
 
-public interface RecordRepository extends JpaRepository<Genre, Long>{
+@Repository
+public interface RecordRepository extends JpaRepository<Record, Long>{
 
 }
