@@ -1,5 +1,6 @@
 package com.devsuperior.sdspesquisa.resources;
 
+import java.net.URI;
 import java.time.Instant;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.devsuperior.sdspesquisa.dto.RecordDTO;
 import com.devsuperior.sdspesquisa.dto.RecordInsertDTO;
@@ -24,12 +26,6 @@ public class RecordResource {
 
 	@Autowired
 	private RecordService service;
-	
-	@PostMapping
-	public ResponseEntity<RecordDTO> insert(@RequestBody RecordInsertDTO dto) {
-		RecordDTO newRecord = service.insert(dto);
-		return ResponseEntity.ok().body(newRecord);
-	}
 	
 	@GetMapping
 	public ResponseEntity<Page<RecordDTO>> findAll(
@@ -51,5 +47,13 @@ public class RecordResource {
 		
 		Page<RecordDTO> list = service.findByMoments(minDate, maxDate, pageRequest);
 		return ResponseEntity.ok().body(list);
+	}
+	
+	@PostMapping
+	public ResponseEntity<RecordDTO> insert(@RequestBody RecordInsertDTO dto) {
+		RecordDTO newRecord = service.insert(dto);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(newRecord.getId()).toUri();
+		return ResponseEntity.created(uri).body(newRecord);
 	}
 }
