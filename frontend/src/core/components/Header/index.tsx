@@ -1,5 +1,5 @@
 import './styles.css';
-import { ReactComponent as LogoImage } from '../../core/assets/logo.svg';
+import { ReactComponent as LogoImage } from '../../assets/logo.svg';
 
 const Header = () => (
 
