@@ -3,16 +3,22 @@ import { useEffect, useState } from 'react';
 import './styles.css';
 import { RecordResponse } from '../../core/utils/types';
 import { formatDate } from '../../core/utils/helpers';
+import Pagination from '../../core/components/Pagination';
 
 const BASE_URL = 'http://localhost:8080';
 
 const Records = () => {
     const [recordResponse, setRecordResponse] = useState<RecordResponse>();
+    const [activePage, setActivePage] = useState(0);
 
     useEffect(() => {
-        axios.get(`${BASE_URL}/records?linesPerPages=12`)
+        axios.get(`${BASE_URL}/records?linesPerPages=12&page=${activePage}`)
         .then(reponse => setRecordResponse(reponse.data));
-    }, []);
+    }, [activePage]);
+
+    const handlePageChange = (index: number) => {
+        setActivePage(index);
+    }
 
     return (
         <div className="page-container">
@@ -40,7 +46,11 @@ const Records = () => {
                     ))}
                 </tbody>
             </table>
-
+            <Pagination 
+                activePage={activePage}
+                goToPage={handlePageChange}
+                totalPages={recordResponse?.totalPages}
+            />
         </div>
     );
 }

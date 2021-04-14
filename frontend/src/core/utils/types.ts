@@ -1,6 +1,7 @@
 export type RecordResponse = {
     content: RecordItem[];
     linesPerPage: number;
+    totalPages: number;
 }
 
 export type RecordItem = {
