@@ -1,7 +1,7 @@
 import './styles.css';
 
 type Props = {
-    totalPages: number | undefined;
+    totalPages?: number;
     goToPage: Function;
     activePage: number;
 }

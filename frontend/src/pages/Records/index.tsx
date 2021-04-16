@@ -4,6 +4,7 @@ import './styles.css';
 import { RecordResponse } from '../../core/utils/types';
 import { formatDate } from '../../core/utils/helpers';
 import Pagination from '../../core/components/Pagination';
+import Filters from '../../core/components/Filters';
 
 const BASE_URL = 'http://localhost:8080';
 
@@ -22,6 +23,7 @@ const Records = () => {
 
     return (
         <div className="page-container">
+            <Filters link="/charts" textLink="VER GRÁFICOS" />
             <table className="records-table" cellPadding="0" cellSpacing="0">
                 <thead>
                     <tr>
