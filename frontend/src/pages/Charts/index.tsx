@@ -38,12 +38,24 @@ const Charts = () => {
                         <h2 className="chart-title">
                             Plataformas
                         </h2>
-                        <Chart 
-                            options={{ ...pieOptions, labels: ['Egberto', 'Jéssica']}}
+                        <Chart
+                            options={{ ...pieOptions, labels:['egberto', 'jéssica']}}
                             type="donut"
-                            series={[30, 70]}
+                            series={[ 50, 50]}
                             width="350"
                         />
+                    </div>
+                    <div className="gender-chart">
+                        <h2 className="chart-title">
+                            Gêneros
+                        </h2>
+                        <Chart
+                            options={{ ...pieOptions, labels:['egberto', 'jéssica']}}
+                            type="donut"
+                            series={[ 50, 50]}
+                            width="350"
+                        />
+                       
                     </div>
                 </div>
             </div>

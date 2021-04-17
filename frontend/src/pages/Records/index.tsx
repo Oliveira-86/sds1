@@ -42,7 +42,7 @@ const Records = () => {
                             <td>{record.name}</td>
                             <td>{record.age}</td>
                             <td className="text-secondary">{record.gamePlatform}</td>
-                            <td>{record.genreGame}</td>
+                            <td>{record.genreName}</td>
                             <td className="text-primary">{record.gameTitle}</td>
                         </tr>
                     ))}

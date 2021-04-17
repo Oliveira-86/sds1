@@ -1,5 +1,5 @@
-import { Game, RecordItem } from './types';
-
+import { Game } from './types';
+import { RecordItem } from './types';
 
 export const buildBarSeries = (games: Game[], records: RecordItem[]) => {
   const mappedGames = games.map(game => {
@@ -40,10 +40,10 @@ export const getPlatformChartData = (records: RecordItem[]) => {
 
 export const getGenderChartData = (records: RecordItem[]) => {
    const genderByAmount = records.reduce((accumulator, currentValue) => {
-     if (accumulator[currentValue.genreGame] !== undefined) {
-       accumulator[currentValue.genreGame] += 1;
+     if (accumulator[currentValue.genreName] !== undefined) {
+       accumulator[currentValue.genreName] += 1;
      } else {
-      accumulator[currentValue.genreGame] = 1;
+      accumulator[currentValue.genreName] = 1;
      }
 
      return accumulator;
