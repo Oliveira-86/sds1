@@ -39,21 +39,21 @@ export const getPlatformChartData = (records: RecordItem[]) => {
 };
 
 export const getGenderChartData = (records: RecordItem[]) => {
-   const genderByAmount = records.reduce((accumulator, currentValue) => {
-     if (accumulator[currentValue.genreName] !== undefined) {
-       accumulator[currentValue.genreName] += 1;
-     } else {
-      accumulator[currentValue.genreName] = 1;
-     }
+  const genderByAmount = records.reduce((accumulator, currentValue) => {
+    if (accumulator[currentValue.genreName] !== undefined) {
+      accumulator[currentValue.genreName] += 1;
+    } else {
+     accumulator[currentValue.genreName] = 0;
+    }
 
-     return accumulator;
-   }, {} as Record<string, number>);
+    return accumulator;
+  }, {} as Record<string, number>);
 
-   const labels = Object.keys(genderByAmount);
-   const series = Object.values(genderByAmount);
+  const labels = Object.keys(genderByAmount);
+  const series = Object.values(genderByAmount);
 
-  return {
-    labels,
-    series
-  };
+ return {
+   labels,
+   series
+ };
 };
